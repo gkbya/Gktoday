@@ -5,14 +5,13 @@ document.querySelectorAll('.question').forEach(question => {
     button.addEventListener('click', () => {
       const chosenOption = button.getAttribute('data-option');
 
-      // Show all options: green if correct, red if selected wrong
       question.querySelectorAll('button').forEach(btn => {
-        const opt = btn.getAttribute('data-option');
+        const option = btn.getAttribute('data-option');
 
-        if (opt === correctOption) {
+        if (option === correctOption) {
           btn.style.backgroundColor = 'green';
           btn.style.color = 'white';
-        } else if (opt === chosenOption) {
+        } else if (option === chosenOption) {
           btn.style.backgroundColor = 'red';
           btn.style.color = 'white';
         }
