@@ -1,21 +1,23 @@
 document.querySelectorAll('.question').forEach(question => {
   const correctOption = question.dataset.correct;
 
-  question.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const userChoice = btn.getAttribute('data-option');
+  question.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', () => {
+      const chosenOption = button.getAttribute('data-option');
 
-      // Highlight correct option in green
-      question.querySelectorAll('button').forEach(b => {
-        const option = b.getAttribute('data-option');
-        if (option === correctOption) {
-          b.style.backgroundColor = 'green';
-          b.style.color = 'white';
-        } else if (option === userChoice) {
-          b.style.backgroundColor = 'red';
-          b.style.color = 'white';
+      // Show all options: green if correct, red if selected wrong
+      question.querySelectorAll('button').forEach(btn => {
+        const opt = btn.getAttribute('data-option');
+
+        if (opt === correctOption) {
+          btn.style.backgroundColor = 'green';
+          btn.style.color = 'white';
+        } else if (opt === chosenOption) {
+          btn.style.backgroundColor = 'red';
+          btn.style.color = 'white';
         }
-        b.disabled = true; // disable all buttons
+
+        btn.disabled = true;
       });
     });
   });
